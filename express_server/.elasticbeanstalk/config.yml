@@ -1,0 +1,22 @@
+branch-defaults:
+  default:
+    environment: node-express-env
+    group_suffix: null
+environment-defaults:
+  node-express-env:
+    branch: null
+    repository: null
+global:
+  application_name: express_server
+  branch: null
+  default_ec2_keyname: null
+  default_platform: Node.js 16
+  default_region: us-east-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-deployment
+  repository: null
+  sc: null
+  workspace_type: Application
