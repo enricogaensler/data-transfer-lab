@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && mv ../express_server",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "aws-amplify": "^5.0.5",
     "axios": ">=0.21.1",
     "core-js": "^2.6.5",
     "esri-loader": "^2.10.0",
