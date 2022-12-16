@@ -21,14 +21,14 @@ def handler(event=None, context=None):
     chrome = webdriver.Chrome("/opt/chromedriver",
                               options=options)
     for i in range(10):
-        chrome.get("http://node-express-env.eba-n2kxxwna.us-east-1.elasticbeanstalk.com/")
+        chrome.get("REPLACE_WITH_EB_HOST_ADDRESS")
         chrome.implicitly_wait(2)
-        chrome.get("http://node-express-env.eba-n2kxxwna.us-east-1.elasticbeanstalk.com/unicorns")
+        chrome.get("REPLACE_WITH_EB_HOST_ADDRESS/unicorns")
         chrome.implicitly_wait(10)
-        chrome.get("http://node-express-env.eba-n2kxxwna.us-east-1.elasticbeanstalk.com/investors")
+        chrome.get("REPLACE_WITH_EB_HOST_ADDRESS/investors")
         chrome.implicitly_wait(2)
-        chrome.get("http://node-express-env.eba-n2kxxwna.us-east-1.elasticbeanstalk.com/faq")
+        chrome.get("REPLACE_WITH_EB_HOST_ADDRESS/faq")
         chrome.implicitly_wait(2)
-        chrome.get("http://node-express-env.eba-n2kxxwna.us-east-1.elasticbeanstalk.com/apply")
+        chrome.get("REPLACE_WITH_EB_HOST_ADDRESS/apply")
         chrome.implicitly_wait(2)
     return 
