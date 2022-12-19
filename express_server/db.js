@@ -23,7 +23,7 @@ async function getAvailableUnicorns() {
 
 //  complete Account Id and Region 
 async function getImageOfUnicorn(imageId) {
-  const bucketParams = { Bucket: 'ACCOUNT_ID-REGION-dm-media-files', Key: `static/wr-unicorn-${imageId}.png` };
+  const bucketParams = { Bucket: 'ACCOUNT_ID-REGION-lab-media-files', Key: `static/wr-unicorn-${imageId}.png` };
   const data = await s3Client.send(new GetObjectCommand(bucketParams));
   // Convert the ReadableStream to a string.
   // console.log(await data.Body.transformToString())
