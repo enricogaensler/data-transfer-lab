@@ -19,19 +19,19 @@ app.get('/api/unicorns', async (req, res) => {
       "name": "Bucephalus",
       "nickname": "Golden Swiss",
       "info": "Bucephalus joined Wild Rydes in February 2016 and has been giving rydes almost daily. He says he most enjoys getting to know each of his ryders, which makes the job more interesting for him. In his spare time, Bucephalus enjoys watching sunsets and playing Pokemon Go.",
-      "image": "unicorn1.png",
+      "image": "one",
     },
     {
       "name": "Shadowfox",
       "nickname": "Brown Jersey",
       "info": "Shadowfox joined Wild Rydes after completing a distinguished career in the military, where he toured the world in many critical missions. Shadowfox enjoys impressing his ryders with magic tricks that he learned from his previous owner.",
-      "image": "unicorn2.png",
+      "image": "two",
     },
     {
       "name": "Rocinante",
       "nickname": "Baby Flying Yellowback",
       "info": "Rocinante recently joined the Wild Rydes team in Madrid, Spain. She was instrumental in forming Wild Rydes’ Spanish operations after a long, distinguished acting career in windmill shadow-jousting.",
-      "image": "unicorn3.png",
+      "image": "three",
     },
   ]
   console.log(unicorns)

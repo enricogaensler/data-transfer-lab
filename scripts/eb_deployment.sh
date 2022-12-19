@@ -1,6 +1,6 @@
 #! /bin/bash
 
-cd ./vue_js
+cd ../vue_js
 npm i
 npm run build
 
