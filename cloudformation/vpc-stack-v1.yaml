@@ -1,0 +1,315 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: AWS CloudFormation Stack for Running ElasticBeanstalk.
+
+Parameters: {}
+
+# --------------------------------------------------------------------------------------------------
+
+Mappings: {}
+
+# --------------------------------------------------------------------------------------------------
+
+Resources:
+
+
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/24
+      EnableDnsSupport: 'true'
+      EnableDnsHostnames: 'true'
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+
+  PublicInternetRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+      RouteTableId: !Ref PublicInternetRouteTable
+
+  VPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: !Ref InternetGateway
+      VpcId: !Ref VPC
+
+  PublicInternetRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+
+  PublicSubnet01:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: !Select [ 0, !GetAZs "" ]
+      CidrBlock: 10.0.0.0/26
+      VpcId: !Ref VPC
+
+  PublicSubnet02:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: !Select [ 1, !GetAZs "" ]
+      CidrBlock: 10.0.0.64/26
+      VpcId: !Ref VPC
+
+  PrivateSubnet01:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: !Select [ 0, !GetAZs "" ]
+      CidrBlock: 10.0.0.128/26
+      VpcId: !Ref VPC
+
+  PrivateSubnet02:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: !Select [ 1, !GetAZs "" ]
+      CidrBlock: 10.0.0.192/26
+      VpcId: !Ref VPC
+
+  DBSubnetGroup: 
+    Properties: 
+      DBSubnetGroupDescription: Subnetgroup for RDS
+      SubnetIds: 
+        - !Ref PrivateSubnet01
+        - !Ref PrivateSubnet02
+      Tags: 
+        - Key: String
+          Value: String
+    Type: "AWS::RDS::DBSubnetGroup"
+
+  PublicSubnet01RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref PublicInternetRouteTable
+      SubnetId: !Ref PublicSubnet01
+
+  PublicSubnet02RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref PublicInternetRouteTable
+      SubnetId: !Ref PublicSubnet02
+  
+  ElasticBeanstalkSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Sub "ElasticBeanstalkSecurityGroup-${AWS::StackName}"
+      GroupDescription: Security Group for all ElasticBeanstalk Environments
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 0
+          ToPort: 65535
+          CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: 0
+          ToPort: 65535
+          CidrIp: 0.0.0.0/0
+      VpcId: !Ref VPC
+  
+  RDSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      VpcId: !Ref VPC
+      GroupDescription: Security Group for RDS
+  
+  RDSSecurityGroupInboundRule:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      IpProtocol: tcp
+      FromPort: 0
+      ToPort: 65535
+      SourceSecurityGroupId:
+        Fn::GetAtt:
+          - ElasticBeanstalkSecurityGroup
+          - GroupId
+      GroupId:
+        Fn::GetAtt:
+          - RDSSecurityGroup
+          - GroupId
+
+# --------------------------------------------------------------------------------------------------
+
+  ElasticBeanstalkApplication:
+    Type: AWS::ElasticBeanstalk::Application
+    Properties:
+      ApplicationName: !Ref AWS::StackName
+  
+  ElasticBeanstalkIAMRole:
+    Type: AWS::IAM::Role
+    Properties: 
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns: 
+        - arn:aws:iam::aws:policy/AWSElasticBeanstalkWebTier
+      Policies:
+        - PolicyName: Ec2toS3Policy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Action:
+                - 's3:GetObject'
+                - 's3:PutObject'
+                - 's3:DeleteObject'
+                Effect: Allow
+                Resource: !Sub "arn:aws:s3:::${AWS::AccountId}-${AWS::Region}-lab-media-files/*"
+
+  ElasticBeanstalkInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties: 
+      Roles: 
+        - !Ref ElasticBeanstalkIAMRole
+
+  ElasticBeanstalkConfigurationTemplate:
+    Type: AWS::ElasticBeanstalk::ConfigurationTemplate
+    Properties:
+      ApplicationName: !Ref ElasticBeanstalkApplication
+      OptionSettings:
+        - Namespace: aws:autoscaling:asg
+          OptionName: MinSize
+          Value: 1
+        - Namespace: aws:autoscaling:asg
+          OptionName: MaxSize
+          Value: 1
+        - Namespace: aws:autoscaling:launchconfiguration
+          OptionName: IamInstanceProfile
+          Value: !Ref ElasticBeanstalkInstanceProfile
+        - Namespace: aws:autoscaling:launchconfiguration
+          OptionName: InstanceType
+          Value: t3.micro
+        - Namespace: aws:elasticbeanstalk:environment
+          OptionName: EnvironmentType
+          Value: LoadBalanced
+        - Namespace: aws:ec2:vpc
+          OptionName: VPCId
+          Value: !Ref VPC
+        - Namespace: aws:ec2:vpc
+          OptionName: Subnets
+          # Value: !Join turns the individual subnets into a string
+          Value: !Join [ ",", [ !Ref PublicSubnet01, !Ref PublicSubnet02 ] ]
+        - Namespace: aws:autoscaling:launchconfiguration
+          OptionName: SecurityGroups
+          Value: !Ref ElasticBeanstalkSecurityGroup
+        - Namespace: aws:ec2:vpc
+          OptionName: AssociatePublicIpAddress
+          Value: 'true'
+      SolutionStackName: 64bit Amazon Linux 2 v5.6.2 running Node.js 16
+  
+  ElasticBeanstalkEnvironment:
+    Type: AWS::ElasticBeanstalk::Environment
+    Properties:
+      ApplicationName: !Ref ElasticBeanstalkApplication
+      Description: ElasticBeanstalk Environment
+      EnvironmentName: !Sub ${AWS::StackName}
+      TemplateName: !Ref ElasticBeanstalkConfigurationTemplate
+
+# --------------------------------------------------------------------------------------------------
+
+  Cloud9:
+    Type: AWS::Cloud9::EnvironmentEC2
+    Properties:
+      AutomaticStopTimeMinutes: 30
+      Description: "Speech AI Workshop - Development Environment"
+      InstanceType: t3.micro
+      ImageId: amazonlinux-2-x86_64
+      Name: !Sub "Workshop-IDE-${AWS::StackName}"
+      Repositories:
+        - PathComponent: /data-transfer-lab
+          RepositoryUrl: https://github.com/enricogaensler/data-transfer-lab
+      SubnetId: !Ref PublicSubnet01
+
+# --------------------------------------------------------------------------------------------------
+
+  S3BucketMediaFiles:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${AWS::AccountId}-${AWS::Region}-lab-media-files"
+
+  S3BucketEbVersion:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${AWS::AccountId}-${AWS::Region}-eb-node-express-version"
+  
+  S3BucketCurData:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${AWS::AccountId}-${AWS::Region}-cur-data"
+
+  S3BucketUnicornBookingData:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${AWS::AccountId}-${AWS::Region}-unicorn-bookings"
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref S3BucketMediaFiles
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Action:
+              - 's3:GetObject'
+              - 's3:PutObject'
+              - 's3:DeleteObject'
+            Effect: Allow
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref S3BucketMediaFiles
+                - /*
+            Principal: '*'
+            Condition:
+              StringLike:
+                'aws:sourceVpce':
+                  - !Ref VPC
+    
+# --------------------------------------------------------------------------------------------------
+
+  AWSSeleniumLambdaExecutionRole:
+     Type: AWS::IAM::Role
+     Properties:
+       AssumeRolePolicyDocument:
+         Statement:
+         - Action:
+           - sts:AssumeRole
+           Effect: Allow
+           Principal:
+             Service:
+             - lambda.amazonaws.com
+         Version: '2012-10-17'
+       Path: "/"
+       Policies:
+       - PolicyDocument:
+           Statement:
+           - Action:
+             - logs:CreateLogGroup
+             - logs:CreateLogStream
+             - logs:PutLogEvents
+             Effect: Allow
+             Resource: arn:aws:logs:*:*:*
+           Version: '2012-10-17'
+         PolicyName: !Sub ${AWS::StackName}-${AWS::Region}-AWSLambda-Selenium-Log
+       - PolicyDocument:
+           Statement:
+           - Action:
+             - ec2:DescribeNetworkInterfaces
+             - ec2:CreateNetworkInterface
+             - ec2:DeleteNetworkInterface
+             - ec2:DescribeInstances
+             - ec2:DescribeNetworkInterfaces
+             Effect: Allow
+             Resource: "*"
+           Version: '2012-10-17'
+         PolicyName: !Sub ${AWS::StackName}-${AWS::Region}-AWSLambda-Selenium-Network-Interface
+       RoleName: !Sub ${AWS::StackName}-${AWS::Region}-AWSLambdaSeleniumExecutionRole
+
+# --------------------------------------------------------------------------------------------------
+
+Outputs: {}
