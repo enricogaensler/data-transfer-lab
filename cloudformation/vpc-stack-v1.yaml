@@ -247,6 +247,16 @@ Resources:
     Properties:
       BucketName: !Sub "${AWS::AccountId}-${AWS::Region}-unicorn-bookings"
 
+  AthenaQueryResultData:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${AWS::AccountId}-${AWS::Region}-athena-query-results"
+
+  LoadBalancerAccessLogs:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${AWS::AccountId}-${AWS::Region}-lb-access-logs"
+
   BucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
