@@ -44,7 +44,7 @@ export default {
   name: 'unicorns',
   data(){
     return{
-      title:"Unicorns Are Our Friends",
+      title:"Our Projects",
       content:"The app is what makes this service exist, but the unicorns make it move. Meet them and see who you are riding with!",
       unicorns: [],
     }
