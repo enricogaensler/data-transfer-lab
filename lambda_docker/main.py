@@ -18,17 +18,19 @@ def handler(event=None, context=None):
     options.add_argument(f"--data-path={mkdtemp()}")
     options.add_argument(f"--disk-cache-dir={mkdtemp()}")
     options.add_argument("--remote-debugging-port=9222")
-    chrome = webdriver.Chrome("/opt/chromedriver",
-                              options=options)
+    chrome = webdriver.Chrome("/opt/chromedriver", options=options)
+
+    EB_HOST_ADDRESS = "REPLACE_WITH_EB_HOST_ADDRESS"
+
     for i in range(10):
-        chrome.get("REPLACE_WITH_EB_HOST_ADDRESS")
+        chrome.get(EB_HOST_ADDRESS)
         chrome.implicitly_wait(2)
-        chrome.get("REPLACE_WITH_EB_HOST_ADDRESS/unicorns")
+        chrome.get(EB_HOST_ADDRESS + "/unicorns")
         chrome.implicitly_wait(10)
-        chrome.get("REPLACE_WITH_EB_HOST_ADDRESS/investors")
+        chrome.get(EB_HOST_ADDRESS + "/investors")
         chrome.implicitly_wait(2)
-        chrome.get("REPLACE_WITH_EB_HOST_ADDRESS/faq")
+        chrome.get(EB_HOST_ADDRESS + "/faq")
         chrome.implicitly_wait(2)
-        chrome.get("REPLACE_WITH_EB_HOST_ADDRESS/apply")
+        chrome.get(EB_HOST_ADDRESS + "/apply")
         chrome.implicitly_wait(2)
     return 
