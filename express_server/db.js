@@ -3,6 +3,9 @@ const aws = require('aws-sdk');
 
 const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
 
+const ACCOUNT_ID = '1234567'
+const REGION = 'us-east-1'
+const BucketName = ACCOUNT_ID+'-'+REGION+'-lab-media-files'
 
 const pool = new Pool({
   user: 'postgres',
@@ -13,7 +16,7 @@ const pool = new Pool({
 })
 
 const s3Client = new S3Client({ 
-  region: 'us-east-1',
+  region: REGION,
 }); 
 
 async function getAvailableUnicorns() {
@@ -23,7 +26,7 @@ async function getAvailableUnicorns() {
 
 //  complete Account Id and Region 
 async function getImageOfUnicorn(imageId) {
-  const bucketParams = { Bucket: 'ACCOUNT_ID-REGION-lab-media-files', Key: `static/windpark-${imageId}.jpg` };
+  const bucketParams = { Bucket: BucketName, Key: `static/windpark-${imageId}.jpg` };
   const data = await s3Client.send(new GetObjectCommand(bucketParams));
   // Convert the ReadableStream to a string.
   // console.log(await data.Body.transformToString())
