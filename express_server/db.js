@@ -19,13 +19,13 @@ const s3Client = new S3Client({
   region: REGION,
 }); 
 
-async function getAvailableUnicorns() {
-    const unicorns = await pool.query('SELECT *  FROM unicorns')
-    return unicorns.rows
+async function getAvailableDogs() {
+    const dogs = await pool.query('SELECT *  FROM unicorns')
+    return dogs.rows
 }
 
 //  complete Account Id and Region 
-async function getImageOfUnicorn(imageId) {
+async function getImageOfDog(imageId) {
   const bucketParams = { Bucket: BucketName, Key: `static/dog-${imageId}.jpeg` };
   const data = await s3Client.send(new GetObjectCommand(bucketParams));
   // Convert the ReadableStream to a string.
@@ -34,4 +34,4 @@ async function getImageOfUnicorn(imageId) {
 }
 
 
-module.exports =  { getAvailableUnicorns, getImageOfUnicorn }
+module.exports =  { getAvailableDogs, getImageOfDog }

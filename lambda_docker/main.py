@@ -25,7 +25,7 @@ def handler(event=None, context=None):
     for i in range(10):
         chrome.get(EB_HOST_ADDRESS)
         chrome.implicitly_wait(2)
-        chrome.get(EB_HOST_ADDRESS + "/unicorns")
+        chrome.get(EB_HOST_ADDRESS + "/dogs")
         chrome.implicitly_wait(10)
         chrome.get(EB_HOST_ADDRESS + "/investors")
         chrome.implicitly_wait(2)

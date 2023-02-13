@@ -14,7 +14,7 @@
         <nav  id="nav"  v-show="isOpen" class="site-nav">
             <ul>
                 <li><router-link to="/">Home</router-link></li> 
-                <li><router-link to="/unicorns">Meet the Unicorns</router-link></li> 
+                <li><router-link to="/dogs">The Office Dogs</router-link></li> 
                 <li><router-link to="/investors">Investors &amp; Board of Directors</router-link></li> 
                 <li><router-link to="/faq">FAQ</router-link></li> 
                 <li> <router-link to="/apply">Apply</router-link> </li>

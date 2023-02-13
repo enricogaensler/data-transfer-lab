@@ -15,9 +15,6 @@
             </div>
         </div>
       </div>
-      <header>
-        <img src="/images/logo.png">
-      </header>
       <div style="text-align:center;"> 
       </div>
       <div class="container" style="text-align:center;">
@@ -31,7 +28,6 @@
 
 
 <script>
-import profileForm from '@/components/profileForm.vue'
 import footers from '@/components/footer.vue'
 import menu from '@/components/menu.vue'
 
@@ -40,7 +36,6 @@ import AmplifyStore from '../store/store';
 export default {
   name: 'Auth',
   components:{
-    profileForm: profileForm,
     footers: footers,
     menus: menu
   },
@@ -109,7 +104,7 @@ export default {
 .page-auth{
   width: 100vw;
   height: 100vh;
-  background-image: url(/images/background.png);
+  background-image: url(/images/home-dog.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center bottom;

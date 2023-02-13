@@ -4,7 +4,7 @@
       <nav class="footer-nav">
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="unicorns">Explore the Windfarms</a></li>
+          <li><a href="dogs">Explore the Windfarms</a></li>
           <li><a href="investors">Investors & Board of Directors</a></li>
           <li><a href="faq">FAQ</a></li>
           <li><a href="apply">Apply</a></li>
@@ -13,7 +13,7 @@
     </div>
     <div class="row column">
       <div class="footer-legal">
-        &copy;WildRydes Inc<br>
+        &copy;Office Dog Leasing Inc<br>
         All Rights Reserved
       </div>
     </div>

@@ -10,11 +10,11 @@ const PORT = 8080;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './dist/')));
 
-app.get('/api/unicorns', async (req, res) => {
+app.get('/api/dogs', async (req, res) => {
   console.log('request obtained')
-  //const unicorns = await db.getAvailableUnicorns()
+  //const dogs = await db.getAvailableDogs()
   
-  const unicorns = [
+  const dogs = [
     {
       "name": "Bucephalus",
       "nickname": "Golden Swiss",
@@ -34,14 +34,14 @@ app.get('/api/unicorns', async (req, res) => {
       "image": "3",
     },
   ]
-  console.log(unicorns)
-  res.json(unicorns);
+  console.log(dogs)
+  res.json(dogs);
 });
 
-app.get('/api/unicorns/image', async (req, res) => {
+app.get('/api/dogs/image', async (req, res) => {
   const imageId = req.query.id
   console.log('fetching image with key ' + imageId)
-  const image = await db.getImageOfUnicorn(imageId)
+  const image = await db.getImageOfDog(imageId)
   res.contentType('image/png');
   res.send(Buffer.from(image, 'binary'));
 });

@@ -17,9 +17,9 @@ const router = new Router({
       component: Home
     },
     {
-      path: '/unicorns',
-      name: 'unicorns',
-      component: () => import(/* webpackChunkName: "unicorns" */ './views/Unicorns.vue')
+      path: '/dogs',
+      name: 'dogs',
+      component: () => import(/* webpackChunkName: "dogs" */ './views/Dogs.vue')
     },
     {
       path: '/investors',
@@ -44,12 +44,6 @@ const router = new Router({
       name: 'auth',
       component: () => import(/* webpackChunkName: "auth" */ './views/Auth.vue')
       
-    },
-    {
-      path: '/ride',
-      name: 'ride',
-      meta: { requiresAuth: true},
-      component: () => import(/* webpackChunkName: "ride" */ './views/Ride.vue')
     },
     
   ]

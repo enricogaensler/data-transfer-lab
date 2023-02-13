@@ -23,7 +23,7 @@
 
       <div class="column">
         <div class="home-about-block">
-          <h3 class="title icon-unicorn">Request A Unicorn</h3>
+          <h3 class="title icon-dog">Request An Office Dog</h3>
           <p class="content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut</p>
         </div>
       </div>
