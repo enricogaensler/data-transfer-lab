@@ -6,7 +6,7 @@ npm run build
 
 mv dist/ ../express_server
 ls
-cd ../express_server/; zip -r ../express-server.zip *
+cd ../express_server/; zip ../express-server.zip -r .* -x "../*"
 cd ..
 ls
 

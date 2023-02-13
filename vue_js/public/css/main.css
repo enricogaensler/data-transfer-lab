@@ -2668,7 +2668,7 @@ img {
 }
 
 .page-home .site-header .title {
-    background: url(../images/home-top.png) no-repeat top;
+    background: url(../images/home-dog.jpg) no-repeat top;
     background-size: cover;
     padding-bottom: 70.2753441802%;
     margin: 0;
@@ -2678,8 +2678,8 @@ img {
 
 @media screen and (min-width:75em) {
     .page-home .site-header .title:after {
-        background: -webkit-linear-gradient(top, transparent, rgba(165,214,167,255) 99%, rgba(165,214,167,255));	
-        background: linear-gradient(180deg, transparent 0, rgba(165,214,167,255) 99%, rgba(165,214,167,255));
+        background: -webkit-linear-gradient(top, transparent, rgba(0,0,0,1) 99%, rgba(0,0,0,1));	
+        background: linear-gradient(180deg, transparent 0, rgba(0,0,0,1) 99%, rgba(0,0,0,1));
         content: '';
         height: 3.75rem;
         width: 100%;
@@ -2715,7 +2715,7 @@ img {
 }
 
 .home-about {
-    background: #a5d6a7;
+    background: #000000;
     color: #fff;
     padding: 5rem 0;
     text-align: center
@@ -2781,9 +2781,9 @@ img {
 }
 
 .home-story {
-    background: url(../images/home-electricity.png) no-repeat bottom;
+    background: url(../images/home-office.jpeg) no-repeat bottom;
     background-size: cover;
-    color: rgb(90, 189, 66);
+    color: rgb(255, 255, 255);
     text-align: center;
     padding: 5rem 0
 }
@@ -2997,7 +2997,7 @@ img {
 }
 
 .page-unicorns .site-header {
-    background: url(../images/projects-top.png) no-repeat top;
+    background: url(../images/dogs-top.png) no-repeat top;
     background-size: 55%;
     text-align: center;
     padding: 1.875rem 0

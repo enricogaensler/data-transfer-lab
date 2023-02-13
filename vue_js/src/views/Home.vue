@@ -9,7 +9,7 @@
     <div class="row column large-9 xlarge-6 xxlarge-4">
       <h2 class="section-title">How Does This Work?</h2>
       <p class="content">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        Attention all companies looking to boost employee morale and productivity! Introducing our office dog leasing program, the paw-some solution for companies looking to add some tail-wagging excitement to their workday. We're talking about the four-legged furballs who are scientifically proven to be the best stress-relievers, communication boosters, and morale-lifters around.
       </p>
     </div>
 
@@ -55,7 +55,7 @@
 
   <section class="home-sign-up">
     <div class="row column">
-      <img class="icon-w" src="images/wr-home-W.png">
+      <img class="icon-w" src="images/logo-bone.png">
 
       <form onsubmit="javascript:void(0);">
         <input type="email" placeholder="Enter your email address">
@@ -82,33 +82,6 @@
       </div>
     </div>
   </section>
-
-  <section class="home-quote">
-    <div class="row column medium-8 xxlarge-6">
-      <div class="quote-wrap">
-        <div class="quote">
-          “I was almost late to my ultimate frisbee tournament in DOLORES park. But Wild Rydes Got me there from the marina in under five minutes.”
-        </div>
-        <div class="quoter">- Satisfied Wild Rydes User</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="kraken-callout">
-    <div class="row">
-      <div class="columns medium-6 xxlarge-4 xxlarge-offset-2">
-        <img src="images/wr-home-kraken.png">
-      </div>
-
-      <div class="columns medium-6 xlarge-5 xxlarge-4">
-        <h4 class="title">Coming Soon</h4>
-        <p class="content">
-          Kraken 3xplorer and Dragon Flyght. We’re looking to provide you a full service package from air, land, and to sea.
-        </p>
-      </div>
-    </div>
-  </section>
-
 
     <footers />
   </div>
