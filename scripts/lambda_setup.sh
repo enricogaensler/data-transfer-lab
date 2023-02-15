@@ -12,4 +12,4 @@ aws ecr get-login-password --region us-east-1 | docker login --username AWS --pa
 
 docker push $AWSACCOUNT.dkr.ecr.us-east-1.amazonaws.com/ecr-repository:latest
 
-aws lambda create-function --function-name selenium-lambda --package-type Image --code ImageUri=$AWSACCOUNT.dkr.ecr.us-east-1.amazonaws.com/ecr-repository:latest --role arn:aws:iam::$AWSACCOUNT:role/vpc-stack-us-east-1-AWSLambdaSeleniumExecutionRole
+aws lambda create-function --function-name selenium-lambda --package-type Image --timeout 300 --memory-size 1024 --code ImageUri=$AWSACCOUNT.dkr.ecr.us-east-1.amazonaws.com/ecr-repository:latest --role arn:aws:iam::$AWSACCOUNT:role/vpc-stack-us-east-1-AWSLambdaSeleniumExecutionRole

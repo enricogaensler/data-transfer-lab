@@ -2997,7 +2997,7 @@ img {
 }
 
 .page-dogs .site-header {
-    background: url(../images/dogs-top.png) no-repeat top;
+    background: url(../images/dogs-top.jpg) no-repeat top;
     background-size: 55%;
     text-align: center;
     padding: 1.875rem 0
@@ -3079,7 +3079,7 @@ img {
 }
 
 .page-investors .top-section {
-    background: url(../images/investors-header-dog.jpg) no-repeat bottom;
+    background: url(../images/investors-header-dog.jpeg) no-repeat bottom;
     background-size: cover;
     text-align: center;
     padding: 1.875rem 0
