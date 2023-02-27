@@ -1,3 +1,5 @@
+import os
+
 from selenium import webdriver
 from tempfile import mkdtemp
 from selenium.webdriver.common.by import By
@@ -20,17 +22,17 @@ def handler(event=None, context=None):
     options.add_argument("--remote-debugging-port=9222")
     chrome = webdriver.Chrome("/opt/chromedriver", options=options)
 
-    EB_HOST_ADDRESS = "REPLACE_WITH_EB_HOST_ADDRESS"
+    EBS_HOST_ADDRESS = 'http://' + os.environ['EBS_URL']
 
     for i in range(10):
-        chrome.get(EB_HOST_ADDRESS)
+        chrome.get(EBS_HOST_ADDRESS)
         chrome.implicitly_wait(2)
-        chrome.get(EB_HOST_ADDRESS + "/dogs")
+        chrome.get(EBS_HOST_ADDRESS + "/dogs")
         chrome.implicitly_wait(10)
-        chrome.get(EB_HOST_ADDRESS + "/investors")
+        chrome.get(EBS_HOST_ADDRESS + "/investors")
         chrome.implicitly_wait(2)
-        chrome.get(EB_HOST_ADDRESS + "/faq")
+        chrome.get(EBS_HOST_ADDRESS + "/faq")
         chrome.implicitly_wait(2)
-        chrome.get(EB_HOST_ADDRESS + "/apply")
+        chrome.get(EBS_HOST_ADDRESS + "/apply")
         chrome.implicitly_wait(2)
     return 

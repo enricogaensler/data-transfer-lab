@@ -3,8 +3,8 @@ const aws = require('aws-sdk');
 
 const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
 
-const ACCOUNT_ID = '1234567'
-const REGION = 'us-east-1'
+const ACCOUNT_ID = process.env.ACCOUNT_ID
+const REGION = process.env.REGION
 const BucketName = ACCOUNT_ID+'-'+REGION+'-lab-media-files'
 
 const pool = new Pool({
