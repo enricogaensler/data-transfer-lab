@@ -16,9 +16,9 @@ zip ../express-server.zip -r .* -x "../*"
 cd ..
 ls
 
-aws s3 mv express-server.zip s3://$AWSREGION-$AWSREGION-eb-node-express-version/express_server.zip
+aws s3 mv express-server.zip s3://$AWSACCOUNT-$AWSREGION-eb-node-express-version/express_server.zip
 
-aws elasticbeanstalk create-application-version --application-name vpc-stack \
+aws elasticbeanstalk create-application-version --application-name dm-lab \
     --version-label $1 \
     --description TestAppAwsCli \
     --source-bundle S3Bucket="$AWSACCOUNT-$AWSREGION-eb-node-express-version",S3Key="express_server.zip" \

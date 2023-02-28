@@ -2,8 +2,8 @@
 
 cd ../lambda_docker/
 
-sudo yum install jq 
-export EBS_URL=$(aws elasticbeanstalk describe-environments --environment-names vpc-stack | jq -r '.Environments[0] .EndpointURL')
+sudo yum -y install jq 
+export EBS_URL=$(aws elasticbeanstalk describe-environments --environment-names dm-lab | jq -r '.Environments[0] .EndpointURL')
 
 aws ecr create-repository --repository-name ecr-repository --region $2
 docker build -t $1.lambda-image .
@@ -19,6 +19,6 @@ aws lambda create-function --function-name selenium-lambda \
     --timeout 300 \
     --memory-size 1024 \
     --code ImageUri=$1.dkr.ecr.$2.amazonaws.com/ecr-repository:latest \
-    --role arn:aws:iam::$1:role/vpc-stack-$2-AWSLambdaSeleniumExecutionRole \
+    --role arn:aws:iam::$1:role/dm-lab-$2-AWSLambdaSeleniumExecutionRole \
     --environment Variables={EBS_URL=$EBS_URL} \
     
