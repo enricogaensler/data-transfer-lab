@@ -39,13 +39,6 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "apply" */ './views/Apply.vue')
     },
 
-    {
-      path: '/auth',
-      name: 'auth',
-      component: () => import(/* webpackChunkName: "auth" */ './views/Auth.vue')
-      
-    },
-    
   ]
 });
   

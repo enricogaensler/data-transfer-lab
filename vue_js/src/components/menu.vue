@@ -18,7 +18,6 @@
                 <li><router-link to="/investors">Investors &amp; Board of Directors</router-link></li> 
                 <li><router-link to="/faq">FAQ</router-link></li> 
                 <li> <router-link to="/apply">Apply</router-link> </li>
-                <li> <a href="/auth">Register</a> </li>
             </ul>
         </nav>
         <div :class="menuStatus">
