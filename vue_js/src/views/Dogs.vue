@@ -5,11 +5,9 @@
 
  <div class="row column medium-10 large-8 xxlarge-6">
     <p class="content">
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.    </p>
-    <p class="content">
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+      Office dogs can be quite different from one another, just like people. Some are calm and well-behaved, while others are wild and wacky.
     </p>
-    <p class="content">See our new windfarm projects.</p>
+    <p class="content">See our Office Dogs.</p>
   </div>
 
   <section class="dogs-list">

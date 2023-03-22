@@ -2747,7 +2747,7 @@ img {
     content: '';
     display: block;
     margin: 0 auto 1.25rem;
-    height: 12.75rem
+    height: 2.75rem
 }
 
 @media screen and (min-width:64em) {
@@ -2757,26 +2757,22 @@ img {
 }
 
 .home-about-block .content {
-    margin: 0
+    margin: 100
 }
 
 .home-about-block .icon-download:before {
-    background: url(../images/wr-home-block-1.png) no-repeat;
     width: 11rem
 }
 
 .home-about-block .icon-dog:before {
-    background: url(../images/wr-home-block-2.png) no-repeat;
     width: 14.75rem
 }
 
 .home-about-block .icon-price:before {
-    background: url(../images/wr-home-block-3.png) no-repeat;
     width: 13.75rem
 }
 
 .home-about-block .icon-success:before {
-    background: url(../images/wr-home-block-4.png) no-repeat;
     width: 14.75rem
 }
 

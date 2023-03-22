@@ -17,28 +17,28 @@
       <div class="column">
         <div class="home-about-block">
           <h3 class="title icon-download">Download The App</h3>
-          <p class="content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut</p>
+          <p class="content">Looking for a furry companion to keep you company at the office? Look no further than our new app, Office Dog Leasing!</p>
         </div>
       </div>
 
       <div class="column">
         <div class="home-about-block">
           <h3 class="title icon-dog">Request An Office Dog</h3>
-          <p class="content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut</p>
+          <p class="content">Have a look at our Office Dogs and request the one that is the best fit to your company!</p>
         </div>
       </div>
 
       <div class="column">
         <div class="home-about-block">
           <h3 class="title icon-price">Pick A Price</h3>
-          <p class="content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut</p>
+          <p class="content">Pick a price that has all services included you wish for!</p>
         </div>
       </div>
 
       <div class="column">
         <div class="home-about-block">
-          <h3 class="title icon-success">Ride Off To Success!</h3>
-          <p class="content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut</p>
+          <h3 class="title icon-success">Boost your company</h3>
+          <p class="content">Have fun with our furry friends and enjoy a productive time at the office!</p>
         </div>
       </div>
     </div>
@@ -48,7 +48,10 @@
     <div class="row column large-9 xlarge-6 xxlarge-4">
       <h2 class="section-title">Our Story</h2>
       <p class="content">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        Once upon a time, a group of dog enthusiasts decided to start a company called Office Dog Leasing. Our vision was to bring the wagging tails and slobbery kisses of dogs to workplaces across the country. Because, let's be honest, who wouldn't want to cuddle a furry friend during a boring meeting?  
+        We trained out furry colleagues to be well-behaved and friendly, teaching them how to fetch coffee and file papers. Okay, maybe not the latter, but they were still good boys and girls.
+
+        Our first client was a small tech startup that was struggling with low employee morale. Our team arrived with a pack of dogs ready to brighten everyone's day. The office was suddenly filled with a chorus of barks and tail wags, and everyone's mood instantly improved. It was like the dogs had brought a whole new level of "pawsitivity" to the office.
       </p>
     </div>
   </section>
@@ -64,7 +67,7 @@
 
       <h2 class="section-title">Sign Up</h2>
 
-      <p class="content">Wild Rydes is coming soon! Enter your email to enter the limited private beta</p>
+      <p class="content">Enter your email to enter the limited private beta</p>
 
       <div class="apps">
         <a class="app-icon" href=""><img src="images/wr-home-apple.png"></a>

@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <h1  v-show="showTitle" class="title">Wild Rydes</h1>
+        <h1  v-show="showTitle" class="title">Office Dog Leasing</h1>
         <nav  id="nav"  v-show="isOpen" class="site-nav">
             <ul>
                 <li><router-link to="/">Home</router-link></li> 
@@ -23,7 +23,7 @@
         <div :class="menuStatus">
             <button @click='toggle()' type="button" class="btn-menu"><span>Menu</span></button>
         </div>
-        <a  v-show="showTitle" class="home-button">Giddy Up!</a>
+        <a  v-show="showTitle" class="home-button">Unleash the Dogs!</a>
     </header>
 </template>
 
