@@ -14,3 +14,5 @@ chmod +x ./eb_deployment.sh
 
 chmod +x ./lambda_setup.sh
 ./lambda_setup.sh $AWSACCOUNT $AWSREGION
+
+aws s3api put-bucket-ownership-controls --bucket elasticbeanstalk-$AWSREGION-$AWSACCOUNT --ownership-controls Rules=[{ObjectOwnership=BucketOwnerPreferred}]
