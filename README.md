@@ -1,1 +1,7 @@
-# data-transfer-lab
+# AWS WAF Sustainability: Data Transfer Lab
+
+This repository cotains important data and application code to run the the workshop *WA Sustainability Lab: Data Movement*. 
+
+The workshop is about optimizing AWS architectures for sustainability. This lab focusses on minimizing data movement across networks according to the best practices  in the AWS Well Architected Framework to gain more resource efficiency. This lab enables customers to explore and measure the data movement of applications. It provides instructions for different services that can serve as a data source for data movement metrics, and how to make use of them. Customers will learn what information to extract and how to interpret it through sustainability proxy metrics. Proxy metrics help customers  to quantify the effect of the changes on the data movement.
+
+The repository contains all the files that customers will need in this workshop. In the directory called scripts are some bash scripts located to simplify the setup process of this lab. The directories express_server and vue_js contain code for the application of Office Dog Leasing which customers will use as an example application at a later stage.This application will be deployed with AWS Elastic Beanstalk. For this application some static files used for a webpage are stored in the directory static. The code directory called lambda_docker is used to build an AWS Lambda function which will simulate customers requests which are needed to run the workshop.
